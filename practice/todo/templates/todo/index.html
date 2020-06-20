@@ -1,0 +1,32 @@
+{% extends "todo/base.html" %}
+{% load static  %}
+
+{% block title %}
+<title>To-do list</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href={% static "todo/css/index_styles.css" %}
+{% endblock %}
+
+{% block body %}
+  <h1 class = "my-3 mx-6">Your task are:</h1>  ////Mistake
+
+  <ol>
+      {% for task in tasks %}
+        <li class = "my-3"> <a href="#">{{ task }}</a></li>
+      {% endfor %}
+  </ol>
+  <form action={% url "addtask" %} method="post">
+    {% csrf_token %}
+    <label for="task">Enter Task:</label>
+    <input type="text" name="task" id = "task" value="">
+    <button type="submit" class="btn btn-outline-primary">Add Task</button>
+  </form>
+
+{% endblock %}
+
+
+{% block js %}
+
+{% endblock %}
